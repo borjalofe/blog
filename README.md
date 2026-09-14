@@ -29,7 +29,7 @@ npm ci
 npm run validate
 ```
 
-That runs two checks, same as Forgejo Actions (`.forgejo/workflows/validate.yml`):
+That runs two checks, same as CI on Forgejo (`.forgejo/workflows/validate.yml`) and GitHub (`.github/workflows/validate.yml`):
 
 | Script | What it checks |
 |--------|----------------|
