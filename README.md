@@ -81,6 +81,10 @@ Stacks change. Astro is fine today; tomorrow it might be something else, or the 
 
 I write in Obsidian. That is the knowledge base; posts start there, with wikilinks, callouts, embeds — the whole OFM surface, not a stripped CommonMark subset. The files in this repo have to stay that way. If the site renderer needs a poorer dialect later, that is a transform problem at build time, not a reason to dumb down the source.
 
+**Why English and Spanish, not one language?**
+
+This kind of blog is also a brand and career tool, so English has to be first-class. I still want brand and reach in Spanish, so every collection keeps `en/` and `es/` instead of treating one locale as an afterthought.
+
 ## Lessons
 
 This repo was the Forgejo Actions pilot (before the site). I would not do that differently. The smoke job proved the runner; validation of real content is the useful next step — and it lives here, where the Markdown is.
