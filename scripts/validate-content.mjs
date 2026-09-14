@@ -93,22 +93,25 @@ async function walkMarkdown(dir) {
   return files;
 }
 
-function collectionOf(filePath) {
+function partsOf(filePath) {
   const rel = path.relative(CONTENT_ROOT, filePath);
-  return rel.split(path.sep)[0];
+  const [collection, locale, ...rest] = rel.split(path.sep);
+  return { collection, locale, basename: path.basename(filePath, ".md"), rest };
 }
 
 async function validateFile(filePath) {
   const rel = path.relative(ROOT, filePath);
   const raw = await readFile(filePath, "utf8");
   const data = parseFrontmatter(raw, rel);
-  if (!data) return;
+  if (!data) return null;
 
   if (typeof data.title !== "string" || !data.title.trim()) {
     fail(`${rel}: frontmatter.title is required (non-empty string)`);
   }
 
-  if (collectionOf(filePath) === "posts") {
+  const { collection, locale, basename } = partsOf(filePath);
+
+  if (collection === "posts") {
     for (const [key, kind] of Object.entries(POST_OPTIONAL)) {
       if (!(key in data)) continue;
       const value = data[key];
@@ -118,6 +121,41 @@ async function validateFile(filePath) {
       if (kind === "dateish" && !isDateish(value)) {
         fail(`${rel}: frontmatter.${key} must be a parseable date`);
       }
+    }
+
+    if (typeof data.reference === "string" && data.reference.trim()) {
+      if (locale === "en" && data.reference !== basename) {
+        fail(
+          `${rel}: frontmatter.reference must be the English slug (expected "${basename}")`,
+        );
+      }
+    }
+  }
+
+  return { rel, collection, locale, basename, data };
+}
+
+function validatePostReferences(posts) {
+  const enBySlug = new Map();
+  for (const post of posts) {
+    if (post.locale !== "en") continue;
+    const slug = post.data.reference?.trim() || post.basename;
+    enBySlug.set(slug, post);
+  }
+
+  for (const post of posts) {
+    if (post.locale !== "es") continue;
+    const ref = post.data.reference?.trim();
+    if (!ref) {
+      fail(
+        `${post.rel}: frontmatter.reference is required on es posts (English slug)`,
+      );
+      continue;
+    }
+    if (!enBySlug.has(ref)) {
+      fail(
+        `${post.rel}: frontmatter.reference "${ref}" must match an English post slug under content/posts/en/`,
+      );
     }
   }
 }
@@ -143,9 +181,12 @@ async function main() {
     fail("content/: expected at least one .md file");
   }
 
+  const posts = [];
   for (const file of markdownFiles) {
-    await validateFile(file);
+    const meta = await validateFile(file);
+    if (meta?.collection === "posts") posts.push(meta);
   }
+  validatePostReferences(posts);
 
   if (errors.length) {
     console.error("Content contract failed:\n");

@@ -66,7 +66,7 @@ Content is **Obsidian-flavored Markdown** with YAML frontmatter.
 | `pubDate` | date (ISO / parseable) |
 | `updatedDate` | date (ISO / parseable) |
 | `heroImage` | string |
-| `reference` | string |
+| `reference` | string — always the **English** slug, in both `en/` and `es/` (pairs translations) |
 | `canonicalURL` | string |
 
 Unknown fields are allowed so a richer schema can land later without breaking CI.

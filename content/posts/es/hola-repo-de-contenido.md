@@ -2,7 +2,7 @@
 title: "Hola, repo de contenido"
 description: "Post semilla que fija el layout de contenido del blog."
 pubDate: 2026-09-14T12:00:00
-reference: hola-repo-de-contenido
+reference: hello-content-repo
 ---
 
 Este stub existe para que el CI tenga Markdown real que validar.
