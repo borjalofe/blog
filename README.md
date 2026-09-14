@@ -85,6 +85,10 @@ I write in Obsidian. That is the knowledge base; posts start there, with wikilin
 
 This kind of blog is also a brand and career tool, so English has to be first-class. I still want brand and reach in Spanish, so every collection keeps `en/` and `es/` instead of treating one locale as an afterthought.
 
+**Minimal content repo vs a site that shows off the stack**
+
+I am not always consistent about keeping the public site fresh. As a developer I also want the website itself to prove what I can do — so I live on the edge between a minimalist blog backed by this repo and a site that shows the full technical range, swapping stacks whenever that helps. Separating content here is how I keep the writing safe while the showcase side stays free to change.
+
 ## Lessons
 
 This repo was the Forgejo Actions pilot (before the site). I would not do that differently. The smoke job proved the runner; validation of real content is the useful next step — and it lives here, where the Markdown is.
