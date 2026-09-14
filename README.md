@@ -77,6 +77,10 @@ Unknown fields are allowed so a richer schema can land later without breaking CI
 
 Stacks change. Astro is fine today; tomorrow it might be something else, or the same Astro site plus a React Native app reading the same copy. A standalone content repo stays flexible in every case I care about. A monorepo would couple the writing to whichever tool happens to win this year.
 
+**Why Obsidian-flavored Markdown instead of "plain" Markdown?**
+
+I write in Obsidian. That is the knowledge base; posts start there, with wikilinks, callouts, embeds — the whole OFM surface, not a stripped CommonMark subset. The files in this repo have to stay that way. If the site renderer needs a poorer dialect later, that is a transform problem at build time, not a reason to dumb down the source.
+
 ## Lessons
 
 This repo was the Forgejo Actions pilot (before the site). I would not do that differently. The smoke job proved the runner; validation of real content is the useful next step — and it lives here, where the Markdown is.
