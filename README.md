@@ -4,7 +4,7 @@ Canonical Markdown content for [borjalofe.com](https://borjalofe.com). Not the A
 
 ## Problem
 
-Writing posts only inside `borjalofe-web` ties content to one build stack. This repo fixes three things:
+I am not always consistent about keeping the public site fresh. As a developer I also want the website itself to prove what I can do — so I live on the edge between a minimalist blog and a site that shows the full technical range, swapping stacks whenever that helps. Writing posts only inside `borjalofe-web` ties the copy to whichever build wins that week. This repo fixes three things:
 
 1. **Fallback** — if the site is down, the originals are still here (GitHub mirror included).
 2. **Source of truth** — if it is not in this repo, I probably did not write it.
@@ -84,10 +84,6 @@ I write in Obsidian. That is the knowledge base; posts start there, with wikilin
 **Why English and Spanish, not one language?**
 
 This kind of blog is also a brand and career tool, so English has to be first-class. I still want brand and reach in Spanish, so every collection keeps `en/` and `es/` instead of treating one locale as an afterthought.
-
-**Minimal content repo vs a site that shows off the stack**
-
-I am not always consistent about keeping the public site fresh. As a developer I also want the website itself to prove what I can do — so I live on the edge between a minimalist blog backed by this repo and a site that shows the full technical range, swapping stacks whenever that helps. Separating content here is how I keep the writing safe while the showcase side stays free to change.
 
 ## Lessons
 
