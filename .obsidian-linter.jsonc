@@ -1,0 +1,9 @@
+{
+  "vaultRoot": ".",
+  "resolve": false,
+  "globs": ["content/**/*.md"],
+  "ignores": ["node_modules/**"],
+  "rules": {
+    "MD013": { "enabled": false }
+  }
+}
