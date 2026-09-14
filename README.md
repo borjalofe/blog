@@ -85,6 +85,10 @@ I write in Obsidian. That is the knowledge base; posts start there, with wikilin
 
 This kind of blog is also a brand and career tool, so English has to be first-class. I still want brand and reach in Spanish, so every collection keeps `en/` and `es/` instead of treating one locale as an afterthought.
 
+**Why both Forgejo Actions and GitHub Actions?**
+
+Forgejo is the primary (`.forgejo/workflows/validate.yml`). The homelab runner can go down; the GitHub mirror still needs the same OFM + contract checks (`.github/workflows/validate.yml`). Public GH Actions runs are also portfolio evidence. If the two disagree, **Forgejo is the gate**; GitHub is mirror and signal, not the source of truth for merge policy.
+
 ## Lessons
 
 This repo was the Forgejo Actions pilot (before the site). I would not do that differently. The smoke job proved the runner; validation of real content is the useful next step — and it lives here, where the Markdown is.
